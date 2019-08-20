@@ -1,7 +1,7 @@
 # Song recommendation for autonomous Vehicle
 
 ## Introduction
-Everything from cars to the tap in your washroom is automatic now a days. you do not need driver in car. Your phone is booking appointments at the salon for you. Have you ever wondered if an assistance can recommend you song in Car on uttering some words and analysing your gender, age, mood and weather for better prediction.
+Everything from cars to the tap in your washroom is automatic now a days. you do not need driver in cars anymore. Your phone is booking appointments at the salon for you. Have you ever wondered if an assistance can recommend you song in Car on uttering some words and analysing your gender, age, mood and weather for better prediction.
 
 Well, point to be noted here is, these uttered words are not singer name, song name, genre or word in lyrics. These can be anything from "I want to hear some fast hard band loud music which feels like storm" to "I am feeling bored play some awesome music". Now "awesome music" is different for a guy of an age 22 and man of age 36, Its different for a woman and a man. What if the weather is rainy or sunny, your desire to listen "awesome song" may vary. it will be different for a guy going through a breakup and a guy who just got a job in Facebook.
 
