@@ -46,7 +46,7 @@ So here the novel idea was to combine Natural Language Processing, Computer Visi
 
 ## Related Work
 
- There had been various work  done related to song recommendation using various techniques like naive bayes, simple logistic regression, multinomial naive bayes. But I have not seen recent work using Neural network. There has also been some work on music recommendation on the basis of mood or feature detection from image. But combining various factors is a novel idea for better song recommendation.
+ There had been various work  done related to song recommendation using various techniques like naive bayes, simple logistic regression, multinomial naive bayes. But I have not seen much recent work using Neural network. There has also been some work on music recommendation on the basis of mood or feature detection from image. But combining various factors is a novel idea for better song recommendation.
  
 The awesomeness of this project comes from privacy. I have not yet seen much privacy preserving techniques in autonomous cars. But it will play a huge role in the near future.
 
