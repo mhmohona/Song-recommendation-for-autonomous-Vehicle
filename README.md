@@ -56,9 +56,183 @@ The lyrics are stored in a bag-of-words format, where words are represented as p
 
 The preprocessed dataset contains:
 
+**"genre_to_mxm_track_dict.pkl"** is a dictionary with values as genre type and each value has key which contain song lyrics token. 
+Corresponding to each key, there is a list which contain tag id of song. this dictionary does not contain whole lyrics of songs but just its tag id.
+
+**"mxm_track_to_genre_dict.pkl"** file. This is a dictionary with keys as song tagids and each key contain only one value i.e. its genre.
+it contains 396863 song tagids.
+
+**“Querydata.npz”** contains sparse matrix of user query, in the form of 5000 dim vector.
+
+### CV dataset
+
+https://susanqq.github.io/UTKFace/
+
+UTKFace dataset is a large-scale face dataset with long age span (range from 0 to 116 years old). The dataset consists of over 20,000 face images with annotations of age, gender, and ethnicity. The images cover large variation in pose, facial expression, illumination, occlusion, resolution, etc.
+
+--- Photo 6 --- 
+
+## Technical Stuff
+
+The project can be divided into three parts:
+1. **Natural Language Processing** - would recommend top 10 songs for a query of user
+2. **Computer Vision** - would select top 5 songs of songs recommended by NLP on the basis of age, gender, emotion and weather.
+3. **Encrypted Deep learning** - would used to encrypt model and data to preserve privacy.
+
+### Natural Language Processing 
+
+#### Feature selection
+
+The goal was to extract semantic features from words in the lyrics of a song. 
+
+First the lyrics is converted to vectors.
+
+#### Why converted lyrics into vectors (word embedding)
+
+In very simplistic terms, Word Embeddings are the texts converted into numbers and there may be different numerical representations of the same text. many Machine Learning algorithms and almost all Deep Learning Architectures are incapable of processing strings or plain text in their raw form.
+
+#### Types of word embedding
+
+1. Frequency based word embedding 
+2. Probabilistic based word embedding
+
+#### count vector (current word embedding)
+
+Consider a Corpus C of D documents {d1,d2…..dD} and N unique tokens extracted out of the corpus C. The N tokens will form our dictionary and the size of the Count Vector matrix M will be given by D X N. Each row in the matrix M contains the frequency of tokens in document D(i).
+Then the word embedding is converted into Tfidf word embedding.
+
+--- Photo 7 --- 
+
+#### why TfidfVectorizer
+
+This is another method which is based on the frequency method but it is different to the count vectorization in the sense that it takes into account not just the occurrence of a word in a single document but in the entire corpus. So, what is the rationale behind this? Let us try to understand.
+Common words like ‘is’, ‘the’, ‘a’ etc. tend to appear quite frequently in comparison to the words which are important to a document. For example, a document A on Lionel Messi is going to contain more occurrences of the word “Messi” in comparison to other documents. But common words like “the” etc. are also going to be present in higher frequency in almost every document.
+Ideally, what we would want is to down weight the common words occurring in almost all documents and give more importance to words that appear in a subset of documents.
+
+--- Photo 8 --- 
+
+Now the dataset is ready to train model. 
+
+#### Disadvantage of using above approach
+
+Let's say the lyrics is “I love it when you call me senorita” the vector of lyrics would contain 1 (number of occurrences of that token) at all positions where tokens are {‘i’, ‘love’, ‘it’, ‘when’, ‘you’, ‘call’, ‘me’, ‘senorita’} in 5000 dim vector. 
+This way only that word is recognized by model. But what if we somehow use features of word instead of frequency of word. For example, features of words “love”, “fondness”, “warmth”, “like”, “disposition” would have the same features. So if we see “love” somewhere and use its feature, we would be dealing with all similar kind of words to “love”. 
+This approach is called Prediction based Embedding. Bert, Fasttext are some examples of Prediction based Embedding. 
+
+I encourage to read this amazing document for more details.
+https://www.analyticsvidhya.com/blog/2017/06/word-embeddings-count-word2veec/
+
+## Method 
+
+This module is itself divided into two parts: 
+Classification and Recommendation.
+
+### Classification
+
+Classification model is trained on song lyrics vector to predict genre of song. This solves two problems-
+1. If a new song is added whose genre information is not given, it can be predicted from the model.
+2. We could use only a part of the dataset because genre information was not given for some tracks. Those songs could be classified to genre using classifier model. 
+
+## Recommendation
+
+### Clustering
+
+Now after converting to Tfidf word embedding. Word embedding would be of shape (number of songs, top words in vocab) i.e. (29512, 5000)
+Each row is a song vector. These vectors are clustered in 20 clusters (you can use more number of clusters) using KMeans (unsupervised Clustering)
+For understanding KMeans clustering go to this link.
+https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+If we would have clustered songs according to genre, we would have forced song to be in particular genre. Since song lyrics cannot be pure “rock” or “electronic” we have created unsupervised clusters. Leaving on each song lyrics to find similar kind of vector and make cluster without giving genre information. 
+Each cluster would have its mean vector( centroid ). 
+
+### Recommender model
+
+#### Training
+
+“Querydata.npz” is the dataset containing user query for particular song. 
+Recommender model would be trained to map query vectors to the cluster which contain respective song. 
+Say a is query for song b which is in cluster c, then input would be a and target would be mean of cluster c.
+
+#### Prediction
+
+When a query is passed in trained model, it would predict a cluster. Top 10 songs with the genres would be recommended out of that cluster after calculating Cosine similarity between query vector and all the songs in that cluster. 
+
+--- Photo 9 --- 
+
+Here NLP task is completed. 
+
+## Computer Vision Module
+
+This module contains four parts :
+1. Face to age classification
+2. Face to gender classification
+3. Face to emotion classification
+4. Image to weather classificatio
+
+### Face to gender classification 
+
+Age is predicted by model and genre top genre is selected. According to survey the preference of genre is:
+Genre = [pop , rock, heavy metal, electronic, hip hop, other]
+female = [47, 38, 8, 20, 20, 25] 
+male = [8, 20, 14, 30, 30, 27]
 
 
+--- Photo 10 --- 
 
+### Face to age classification
+
+Age is predicted by model and genre top genre is selected.
+
+--- Photo 11 --- 
+
+### Face to emotion classification
+
+There is no statistics on internet of emotion versus genre. There could be found relation between harmony, pitch, rhythm, loudness but not genres. This feature would be added to the project as soon as some statistics could be found on the web. 
+
+### Weather to genre classification
+
+For weather, there could not be found any relation between weather and genre. This module is also not created because no dataset could be found for the same. 
+
+### Combine
+
+Using the age and gender prediction from cv models. Both the statistics are combined by simple multiplication and top three preferred genres are predicted.
+Top 5 songs out of top 10 predicted by NLP model are selected on the basis of commom genre predicted by CV and NLP models.
+These 5 songs are most suitable for recommendation. 
+
+--- Photo 12 --- 
+
+## Encrypted Deep learning 
+
+All the implemented Computer vision model are trained on encrypted data. Model is also encrypted for prediction. So that model owner is unaware of test data and data owner could not predict model parameters. 
+Hence privacy is preserved. 
+For more details relating encrypted deep learning read this amazing blog.
+https://blog.openmined.org/encrypted-deep-learning-classification-with-pysyft/
+
+--- Photo 13 --- 
+
+## Problems faced
+
+1. Model could not be trained on full dataset, since Colab provided limited RAM. Hence they are trained on subset of data and small batch size.
+2. Prediction based word embeddings are huge in size ( minimum 2.3 GB ) so could not be loaded on colab because of limited RAM.
+3. No dataset could be found for Weather to genre and Emotion to genre.
+
+## Future Work
+
+## Natural Language Processing module 
+
+1. Prediction based word embedding can be used instead of frequency based word embedding for lot better results. I have discussed the reason above.
+2. Various state of art pretrained models like BERT can be used. So transfer learning could be applied for better extraction of words.
+
+### Computer vision module
+
+1. Emotion and weather based models could be implemented for better song prediction of genre and in turn better song recommendation. 
+
+## Contributors 
+
+@Ashish Shrivastava - Ashish Kumar Shrivastava
+@Labiba - Labiba Kanij Rupty
+@Mahedi - Md. Mahedi Hasan Riday
+@Mayank Devnani - Mayank Devnani
+@Mohona - Mahfuza Humayra Mohona
 
 
 
