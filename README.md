@@ -5,25 +5,29 @@ Everything from cars to the tap in your is automatic now a days. you do not need
 
 Well, point to be noted here is, these uttered words are not singer name, song name, genre or word in lyrics. These can be anything from "I want to hear some fast hard band loud music which feels like storm" to "I am feeling bored play some awesome music". Now "awesome music" is different for a guy of an age 22 and man of age 36, Its different for a woman and a man. What if the weather is rainy or sunny, your desire to listen "awesome song" may vary. it will be different for a guy going through a breakup and a guy who just got a job in Facebook.
 
---- Photo 1 ---
+![1](https://user-images.githubusercontent.com/14244685/63367734-4fa56800-c39e-11e9-90c2-66ab72046fec.jpg)
 
 ### Why Users query
 Whatever the situation, mood, weather, age or gender. If users want to listen to some kind of song, that should be the first preference. AI has grown up fast, it can predict what your age, gender, etc is. But it still cannot read minds. Only user knows what kind of song one wants to listen. it does not matter if user seems 22 years old but if he wants to listen to old songs, then old song must be recommended to him.
 ### Why user age
 Statistics obtained by survey shows that the song preference vary according to our age. And this is obvious too, your grandma may not love to listen, "I love it when you call me Senorita", or may be. In simple words, our preference changes as our age passes.
 
---- Photo 2 --- 
+
+![2](https://user-images.githubusercontent.com/14244685/63367735-503dfe80-c39e-11e9-9d21-8d433b72ca75.png)
+
 
 ### Why user gender
 According to a survey Female love to listen Pop and Rock and Male love to listen Rap, Hip-Hop and Electronic music. So its necessary to predict gender of user for better recommendations. (When male and female are together, you should ignore man's preference for betterment of both, just kidding )
 
---- photo 3 ---
+![3](https://user-images.githubusercontent.com/14244685/63367738-503dfe80-c39e-11e9-837c-b79ae5cbc505.png)
+
 
 ### Why emotion
 
 We prefer listening to different songs at different mood. If we are happy, we would go for some hip-hop kinda song, if sad we would prefer listening slow song. So emotions directly affect the desire for song. 
 
---- photo 4 ---
+![4](https://user-images.githubusercontent.com/14244685/63367739-50d69500-c39e-11e9-80cc-bcec764ccbf3.png)
+
 
 ### Why weather
 
@@ -33,7 +37,7 @@ There are two things, one is that our mood depends on the weather, for examples,
 
 Privacy has become a big factor nowadays. User would never want his/her music preference to be leaked. Recommendation model contain a lot of private information about user like query, image of the face, image of his location. There has been various adversarial attacking techniques like model inversion attacks which can be used to reverse engineer the model and input. Even image of your face can be obtained from model parameters and prediction probabilities.
 
---- Photo 5 --- 
+![5](https://user-images.githubusercontent.com/14244685/63367740-50d69500-c39e-11e9-92dd-e129556f22d7.png)
 
 Read this awesome paper for more details. 
 https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwjf_NC-npHkAhXHfn0KHZvUAQMQFjAAegQIBhAC&url=https%3A%2F%2Fwww.cs.cmu.edu%2F~mfredrik%2Fpapers%2Ffjr2015ccs.pdf&usg=AOvVaw2Zl7-ovye12xyCeYm3tnhu
@@ -70,7 +74,8 @@ https://susanqq.github.io/UTKFace/
 
 UTKFace dataset is a large-scale face dataset with long age span (range from 0 to 116 years old). The dataset consists of over 20,000 face images with annotations of age, gender, and ethnicity. The images cover large variation in pose, facial expression, illumination, occlusion, resolution, etc.
 
---- Photo 6 --- 
+![6](https://user-images.githubusercontent.com/14244685/63367741-516f2b80-c39e-11e9-9ead-39c2dbe96b97.png)
+
 
 ## Technical Stuff
 
@@ -101,7 +106,8 @@ In very simplistic terms, Word Embeddings are the texts converted into numbers a
 Consider a Corpus C of D documents {d1,d2…..dD} and N unique tokens extracted out of the corpus C. The N tokens will form our dictionary and the size of the Count Vector matrix M will be given by D X N. Each row in the matrix M contains the frequency of tokens in document D(i).
 Then the word embedding is converted into Tfidf word embedding.
 
---- Photo 7 --- 
+![7](https://user-images.githubusercontent.com/14244685/63367742-516f2b80-c39e-11e9-801c-29f13cc885f8.png)
+
 
 #### Why TfidfVectorizer
 
@@ -109,7 +115,8 @@ This is another method which is based on the frequency method but it is differen
 Common words like ‘is’, ‘the’, ‘a’ etc. tend to appear quite frequently in comparison to the words which are important to a document. For example, a document A on Lionel Messi is going to contain more occurrences of the word “Messi” in comparison to other documents. But common words like “the” etc. are also going to be present in higher frequency in almost every document.
 Ideally, what we would want is to down weight the common words occurring in almost all documents and give more importance to words that appear in a subset of documents.
 
---- Photo 8 --- 
+![8](https://user-images.githubusercontent.com/14244685/63367743-5207c200-c39e-11e9-8a1c-1ca213db4395.png)
+ 
 
 Now the dataset is ready to train model. 
 
@@ -156,7 +163,7 @@ Say a is query for song b which is in cluster c, then input would be a and targe
 
 When a query is passed in trained model, it would predict a cluster. Top 10 songs with the genres would be recommended out of that cluster after calculating Cosine similarity between query vector and all the songs in that cluster. 
 
---- Photo 9 --- 
+![9](https://user-images.githubusercontent.com/14244685/63367728-4e743b00-c39e-11e9-9c1d-3678d7a74c56.png)
 
 Here NLP task is completed. 
 
@@ -176,13 +183,15 @@ female = [47, 38, 8, 20, 20, 25]
 male = [8, 20, 14, 30, 30, 27]
 
 
---- Photo 10 --- 
+![10](https://user-images.githubusercontent.com/14244685/63367729-4e743b00-c39e-11e9-8c9a-d8843a6b8a87.png)
+
 
 ### Face to age classification
 
 Age is predicted by model and genre top genre is selected.
 
---- Photo 11 --- 
+![11](https://user-images.githubusercontent.com/14244685/63367730-4f0cd180-c39e-11e9-9d2a-05d59228b719.png)
+
 
 ### Face to emotion classification
 
@@ -198,7 +207,8 @@ Using the age and gender prediction from cv models. Both the statistics are comb
 Top 5 songs out of top 10 predicted by NLP model are selected on the basis of commom genre predicted by CV and NLP models.
 These 5 songs are most suitable for recommendation. 
 
---- Photo 12 --- 
+![12](https://user-images.githubusercontent.com/14244685/63367732-4f0cd180-c39e-11e9-98f2-c5818ed5ceaa.png)
+
 
 ## Encrypted Deep learning 
 
@@ -207,7 +217,9 @@ Hence privacy is preserved.
 For more details relating encrypted deep learning read this amazing blog.
 https://blog.openmined.org/encrypted-deep-learning-classification-with-pysyft/
 
---- Photo 13 --- 
+
+![13](https://user-images.githubusercontent.com/14244685/63367733-4fa56800-c39e-11e9-8ffa-6fc397360f60.png)
+
 
 ## Problems faced
 
