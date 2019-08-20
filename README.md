@@ -47,7 +47,7 @@ The awesomeness of this project comes from privacy. I have not yet seen any priv
 
 ## Datasets
 
-NLP dataset
+### NLP dataset
 
 http://millionsongdataset.com/
 
@@ -96,14 +96,14 @@ In very simplistic terms, Word Embeddings are the texts converted into numbers a
 1. Frequency based word embedding 
 2. Probabilistic based word embedding
 
-#### count vector (current word embedding)
+#### Count vector (current word embedding)
 
 Consider a Corpus C of D documents {d1,d2…..dD} and N unique tokens extracted out of the corpus C. The N tokens will form our dictionary and the size of the Count Vector matrix M will be given by D X N. Each row in the matrix M contains the frequency of tokens in document D(i).
 Then the word embedding is converted into Tfidf word embedding.
 
 --- Photo 7 --- 
 
-#### why TfidfVectorizer
+#### Why TfidfVectorizer
 
 This is another method which is based on the frequency method but it is different to the count vectorization in the sense that it takes into account not just the occurrence of a word in a single document but in the entire corpus. So, what is the rationale behind this? Let us try to understand.
 Common words like ‘is’, ‘the’, ‘a’ etc. tend to appear quite frequently in comparison to the words which are important to a document. For example, a document A on Lionel Messi is going to contain more occurrences of the word “Messi” in comparison to other documents. But common words like “the” etc. are also going to be present in higher frequency in almost every document.
@@ -228,19 +228,12 @@ https://blog.openmined.org/encrypted-deep-learning-classification-with-pysyft/
 
 ## Contributors 
 
-@Ashish Shrivastava - Ashish Kumar Shrivastava
-@Labiba - Labiba Kanij Rupty
-@Mahedi - Md. Mahedi Hasan Riday
-@Mayank Devnani - Mayank Devnani
-@Mohona - Mahfuza Humayra Mohona
-
-
-
-
-
-
-
-
-
-
-
+ Slack Handle | Contributor
+------------ | -------------
+ @Ashish Shrivastava | Ashish Kumar Shrivastava 
+  @Labiba | Labiba Kanij Rupty  
+  @Mahedi | Md. Mahedi Hasan Riday  
+ @Mayank Devnani  | Mayank Devnani  
+  @Mohona | Mahfuza Humayra Mohona  
+  
+  
