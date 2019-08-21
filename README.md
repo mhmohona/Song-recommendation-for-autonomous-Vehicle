@@ -1,32 +1,54 @@
 # Song recommendation for autonomous Vehicle
 
 ## Introduction
-Everything from cars to the tap in your is automatic now a days. you do not need driver in car. Your phone is booking appointments at the salon for you. Have you ever wondered if an assistance can recommend you song in Car on uttering some words and analysing your gender, age, mood and weather for better prediction.
+Everything from cars to the tap in your washroom is automated now-a-days. you do not need drivers in cars anymore. Your phone is booking appointments at the salon for you. Have you ever wondered how it would be if an AI assistance can recommend you song in Car on uttering some words and analysing your gender, age, mood and weather for better prediction.
 
 Well, point to be noted here is, these uttered words are not singer name, song name, genre or word in lyrics. These can be anything from "I want to hear some fast hard band loud music which feels like storm" to "I am feeling bored play some awesome music". Now "awesome music" is different for a guy of an age 22 and man of age 36, Its different for a woman and a man. What if the weather is rainy or sunny, your desire to listen "awesome song" may vary. it will be different for a guy going through a breakup and a guy who just got a job in Facebook.
 
 ![1](https://user-images.githubusercontent.com/14244685/63367734-4fa56800-c39e-11e9-90c2-66ab72046fec.jpg)
 
-### Why Users query
-Whatever the situation, mood, weather, age or gender. If users want to listen to some kind of song, that should be the first preference. AI has grown up fast, it can predict what your age, gender, etc is. But it still cannot read minds. Only user knows what kind of song one wants to listen. it does not matter if user seems 22 years old but if he wants to listen to old songs, then old song must be recommended to him.
-### Why user age
-Statistics obtained by survey shows that the song preference vary according to our age. And this is obvious too, your grandma may not love to listen, "I love it when you call me Senorita", or may be. In simple words, our preference changes as our age passes.
+### Why Users' query
+Whatever the situation, mood, weather, age or gender. If users want to listen to some kind of song, that should be the first preference. AI has grown up fast, it can predict what your age, gender, etc is. But it still cannot read minds. Only user knows what kind of song one wants to listen. It does not matter if user seems 22 years old but if he wants to listen to old songs, then old song must be recommended to him.
+
+### Why Users' age
+Statistics obtained by survey shows that the song preference vary according to our age. And this is obvious too, your grandma may not love to listen, "I love it when you call me Senorita", or she may love( just kidding ). In simple words, our preference for song genre changes as our age passes.
 
 
 ![2](https://user-images.githubusercontent.com/14244685/63367735-503dfe80-c39e-11e9-9d21-8d433b72ca75.png)
 
 
 ### Why user gender
-According to a survey Female love to listen Pop and Rock and Male love to listen Rap, Hip-Hop and Electronic music. So its necessary to predict gender of user for better recommendations. (When male and female are together, you should ignore man's preference for betterment of both, just kidding )
+According to a survey Female love to listen Pop and Rock and Male love to listen Rap, Hip-Hop and Electronic music. So it's necessary to predict gender of user for better recommendations. (When male and female are together, you should ignore man's preference for betterment of both, just kidding )
 
 ![3](https://user-images.githubusercontent.com/14244685/63367738-503dfe80-c39e-11e9-837c-b79ae5cbc505.png)
 
 
 ### Why emotion
 
-We prefer listening to different songs at different mood. If we are happy, we would go for some hip-hop kinda song, if sad we would prefer listening slow song. So emotions directly affect the desire for song. 
+We prefer listening to different songs at different mood. If we are happy, we would go for some hip-hop kinda song, if sad, we would prefer listening slow song. So emotions directly affect the desire for song. 
 
-![4](https://user-images.githubusercontent.com/14244685/63367739-50d69500-c39e-11e9-80cc-bcec764ccbf3.png)
+Musical Element | Dignified/Solemn| Sad/Heavy | Dreamy/Sentimental|Serene/Gentle
+------------ | -------------| ------------ | -------------|------------ 
+| Mode | Major 4 | minor | minor 12| major 3 |
+|Tempo | slow 14 | slow 12 |slow 16| slow 20 |
+|Pitch| low 10 | low 19 | high 6| high 8 |
+|Rhythm  | firm 18| firm 3 | flowing| flowing 2|
+|Harmony | simple 3 | complex | - | simple 10|
+|Melody | ascend 4 | - |- | ascend 3|
+
+
+-------------------------
+
+Musical Element | Graceful/Sparkling | Happy/Bright | Excited/Elated |Vigorous/Majestic
+------------ | -------------| ------------ | -------------|------------ 
+Mode | Major 21 | major | - | - 
+Tempo | fast 6| fast 20 | fast 21| fast 6 
+Pitch| high 16| high 6 | low 9| low 13
+Rhythm  | flowing 8 | flowing | firm 2| firm 10  
+Harmony | simple 12 | simple | complex 14| complex
+Melody | descend 3 | - | descend 7| descend 8
+
+<!---![4](https://user-images.githubusercontent.com/14244685/63367739-50d69500-c39e-11e9-80cc-bcec764ccbf3.png) --->
 
 
 ### Why weather
@@ -46,8 +68,9 @@ So here the novel idea was to combine Natural Language Processing, Computer Visi
 
 ## Related Work
 
- There had been various work  done related to song recommendation using various techniques like naive bayes, simple logistic regression, multinomial naive bayes. But I have not seen recent work using Neural network. There has also been some work on music recommendation on the basis of mood or feature detection from image. But combining various factors is a novel idea for better song recommendation.
-The awesomeness of this project comes from privacy. I have not yet seen any privacy preserving techniques in autonomous cars. But it will play a huge role in the near future.
+ There had been various work  done related to song recommendation using various techniques like naive bayes, simple logistic regression, multinomial naive bayes. But I have not seen much recent work using Neural network. There has also been some work on music recommendation on the basis of mood or feature detection from image. But combining various factors is a novel idea for better song recommendation.
+ 
+The awesomeness of this project comes from privacy. I have not yet seen much privacy preserving techniques in autonomous cars. But it will play a huge role in the near future.
 
 ## Datasets
 
@@ -77,12 +100,12 @@ UTKFace dataset is a large-scale face dataset with long age span (range from 0 t
 ![6](https://user-images.githubusercontent.com/14244685/63367741-516f2b80-c39e-11e9-9ead-39c2dbe96b97.png)
 
 
-## Technical Stuff
+## Technical Discussion
 
 The project can be divided into three parts:
-1. **Natural Language Processing** - would recommend top 10 songs for a query of user
-2. **Computer Vision** - would select top 5 songs of songs recommended by NLP on the basis of age, gender, emotion and weather.
-3. **Encrypted Deep learning** - would used to encrypt model and data to preserve privacy.
+1. **Natural Language Processing** - NLP module will recommend top 10 songs for a query of user
+2. **Computer Vision** - CV module will select top 5 songs out of songs recommended by NLP module on the basis of age, gender, emotion and weather.
+3. **Encrypted Deep learning** -Encrypted DL will be used to encrypt model and data to preserve privacy.
 
 ### Natural Language Processing 
 
@@ -137,7 +160,7 @@ Classification and Recommendation.
 ### Classification
 
 Classification model is trained on song lyrics vector to predict genre of song. This solves two problems-
-1. If a new song is added whose genre information is not given, it can be predicted from the model.
+1. If a new song is added to database whose genre information is not given, it can be predicted from the model.
 2. We could use only a part of the dataset because genre information was not given for some tracks. Those songs could be classified to genre using classifier model. 
 
 ## Recommendation
@@ -148,8 +171,8 @@ Now after converting to Tfidf word embedding. Word embedding would be of shape (
 Each row is a song vector. These vectors are clustered in 20 clusters (you can use more number of clusters) using KMeans (unsupervised Clustering)
 For understanding KMeans clustering go to this link.
 https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
-If we would have clustered songs according to genre, we would have forced song to be in particular genre. Since song lyrics cannot be pure “rock” or “electronic” we have created unsupervised clusters. Leaving on each song lyrics to find similar kind of vector and make cluster without giving genre information. 
-Each cluster would have its mean vector( centroid ). 
+If we would have clustered songs according to genre, we would have forced songs to be in particular genre. Since song lyrics sometimes are not pure “rock” or “electronic” we have created 20 clusters using unsupervised method i.e kmeans. Leaving on each song lyrics to find similar kind of vector and make cluster without giving genre information. 
+After clusters are obtained, each cluster would have its mean vector( centroid ). 
 
 ### Recommender model
 
@@ -157,11 +180,11 @@ Each cluster would have its mean vector( centroid ).
 
 “Querydata.npz” is the dataset containing user query for particular song. 
 Recommender model would be trained to map query vectors to the cluster which contain respective song. 
-Say a is query for song b which is in cluster c, then input would be a and target would be mean of cluster c.
+Say, a is query for song b which is in cluster c, then input would be vector a and target would be mean vector of cluster c.
 
 #### Prediction
 
-When a query is passed in trained model, it would predict a cluster. Top 10 songs with the genres would be recommended out of that cluster after calculating Cosine similarity between query vector and all the songs in that cluster. 
+When a query is passed in trained model, it would predict a cluster. Top 10 songs along with the genres would be recommended out of that cluster after calculating Cosine similarity between query vector and all the songs in that cluster. 
 
 ![9](https://user-images.githubusercontent.com/14244685/63367728-4e743b00-c39e-11e9-9c1d-3678d7a74c56.png)
 
@@ -173,7 +196,7 @@ This module contains four parts :
 1. Face to age classification
 2. Face to gender classification
 3. Face to emotion classification
-4. Image to weather classificatio
+4. Image to weather classification
 
 ### Face to gender classification 
 
@@ -188,7 +211,7 @@ male = [8, 20, 14, 30, 30, 27]
 
 ### Face to age classification
 
-Age is predicted by model and genre top genre is selected.
+Age is predicted by model and top genre is selected.
 
 ![11](https://user-images.githubusercontent.com/14244685/63367730-4f0cd180-c39e-11e9-9d2a-05d59228b719.png)
 
@@ -220,6 +243,7 @@ https://blog.openmined.org/encrypted-deep-learning-classification-with-pysyft/
 
 ![13](https://user-images.githubusercontent.com/14244685/63367733-4fa56800-c39e-11e9-8ffa-6fc397360f60.png)
 
+I couldn't mention lyrics of songs but only track id as the dataset was already in token-frequency dictionary format. Song can be retrived from MusiXmatch dataset using the track id. 
 
 ## Problems faced
 
@@ -229,10 +253,10 @@ https://blog.openmined.org/encrypted-deep-learning-classification-with-pysyft/
 
 ## Future Work
 
-## Natural Language Processing module 
+### Natural Language Processing module 
 
 1. Prediction based word embedding can be used instead of frequency based word embedding for lot better results. I have discussed the reason above.
-2. Various state of art pretrained models like BERT can be used. So transfer learning could be applied for better extraction of words.
+2. Various state of the art pretrained models like BERT can be used. So transfer learning could be applied for better extraction of words.
 
 ### Computer vision module
 
